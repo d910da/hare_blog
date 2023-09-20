@@ -14,7 +14,7 @@ class Post extends Model
         'title',
         'body',
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -22,6 +22,11 @@ class Post extends Model
 
     public function getImageUrlAttribute()
     {
-    return Storage::url('images/posts/' . $this->image);
+        return Storage::url('images/posts/' . $this->image);
+    }
+
+    public function getImagePathattribute()
+    {
+        return 'images/posts/' . $this->image;
     }
 }
