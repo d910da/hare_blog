@@ -27,8 +27,8 @@
                     @method('DELETE')
                     <input type="submit" value="削除" onclick="if(!confirm('削除しますか？')){return false};"
                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-20">
-                @endcan
-            </form>
+                </form>
+            @endcan
         </div>
         @auth
             <hr class="my-4">
@@ -38,5 +38,25 @@
                     class="bg-indigo-400 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block">コメント登録</a>
             </div>
         @endauth
+
+        <section class="font-sans break-normal text-gray-900 ">
+            @foreach ($comments as $comment)
+                <div class="my-2">
+                    <span class="font-bold mr-3">{{ $comment->user->name }}</span>
+                    <span class="text-sm">{{ $comment->created_at }}</span>
+                    <p class='break-all'>{!! nl2br(e($comment->body)) !!}</p>
+                </div>
+                <hr>
+            @endforeach
+        </section>
     </div>
 </x-app-layout>
+
+
+
+
+
+
+
+
+
